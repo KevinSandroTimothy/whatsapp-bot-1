@@ -44,16 +44,16 @@ module.exports = msgHandler = async (client, message) => {
         }
 
         const mess = {
-            wait: '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar',
+            wait: '⏳ Memprose...',
             error: {
-                St: '[❗] Kirim gambar dengan caption *!sticker* atau tag gambar yang sudah dikirim',
-                Qm: '[❗] Terjadi kesalahan, mungkin themenya tidak tersedia!',
-                Yt3: '[❗] Terjadi kesalahan, tidak dapat meng konversi ke mp3!',
-                Yt4: '[❗] Terjadi kesalahan, mungkin error di sebabkan oleh sistem.',
-                Ig: '[❗] Terjadi kesalahan, mungkin karena akunnya private',
-                Ki: '[❗] Bot tidak bisa mengeluarkan admin group!',
-                Ad: '[❗] Tidak dapat menambahkan target, mungkin karena di private',
-                Iv: '[❗] Link yang anda kirim tidak valid!'
+                St: '⚠️ Kirim gambar dengan caption *!sticker* atau tag gambar yang sudah dikirim',
+                Qm: '⚠️ Terjadi kesalahan, mungkin themenya tidak tersedia!',
+                Yt3: '⚠️ Terjadi kesalahan, tidak dapat meng konversi ke mp3!',
+                Yt4: '⚠️ Terjadi kesalahan, mungkin error di sebabkan oleh sistem.',
+                Ig: '⚠️ Terjadi kesalahan, mungkin karena akunnya private',
+                Ki: '⚠️ Bot tidak bisa mengeluarkan admin group!',
+                Ad: '⚠️ Tidak dapat menambahkan target, mungkin karena di private',
+                Iv: '⚠️ Link yang anda kirim tidak valid!'
             }
         }
         const apiKey = 'API-KEY' // apikey you can get it at https://mhankbarbar.moe
@@ -64,7 +64,7 @@ module.exports = msgHandler = async (client, message) => {
         const groupAdmins = isGroupMsg ? await client.getGroupAdmins(groupId) : ''
         const isGroupAdmins = isGroupMsg ? groupAdmins.includes(sender.id) : false
         const isBotGroupAdmins = isGroupMsg ? groupAdmins.includes(botNumber + '@c.us') : false
-        const ownerNumber = ["628xxx@c.us","55xxxxx"] // replace with your whatsapp number
+        const ownerNumber = ["6285855633899"] // replace with your whatsapp number
         const isOwner = ownerNumber.includes(sender.id)
         const isBlocked = blockNumber.includes(sender.id)
         const isNsfw = isGroupMsg ? nsfw_.includes(chat.id) : false
@@ -113,7 +113,7 @@ module.exports = msgHandler = async (client, message) => {
                         await client.sendImageAsSticker(from, `data:image/gif;base64,${gif.toString('base64')}`)
                     })
                 } else (
-                    client.reply(from, '[❗] Kirim video dengan caption *!stickerGif* max 10 sec!', id)
+                    client.reply(from, '⚠️ Kirim video dengan caption *!stickerGif* max 10 sec!', id)
                 )
             }
             break
@@ -146,7 +146,7 @@ module.exports = msgHandler = async (client, message) => {
             const ttsAr = require('node-gtts')('ar')
             const dataText = body.slice(8)
             if (dataText === '') return client.reply(from, 'Baka?', id)
-            if (dataText.length > 500) return client.reply(from, 'Teks terlalu panjang!', id)
+            if (dataText.length > 500) return client.reply(from, '⚠️ Teks terlalu panjang!', id)
             var dataBhs = body.slice(5, 7)
 	        if (dataBhs == 'id') {
                 ttsId.save('./media/tts/resId.mp3', dataText, function () {
